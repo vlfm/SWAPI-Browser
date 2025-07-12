@@ -1,7 +1,7 @@
 import Domain
 import Foundation
 
-let root = Root(
+public let root = Root(
     films: URL(string: "https://swapi.info/api/films")!,
     people: URL(string: "https://swapi.info/api/people")!,
     planets: URL(string: "https://swapi.info/api/planets")!,
@@ -10,7 +10,7 @@ let root = Root(
     vehicles: URL(string: "https://swapi.info/api/vehicles")!,
 )
 
-let planets: [Planet] = [
+public let planets: [Planet] = [
     Planet(
         climate: "arid",
         diameter: 10465,

@@ -19,6 +19,9 @@ public final class ApiServiceMock: ApiService {
     public let starshipMockFunc = AsyncMockFunc<Starship.ID, Starship, Error>()
     public let vehicleMockFunc = AsyncMockFunc<Vehicle.ID, Vehicle, Error>()
 
+    public init() {
+    }
+
     public func root() async throws -> Root {
         return try await rootMockFunc.call()
     }

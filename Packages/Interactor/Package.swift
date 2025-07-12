@@ -4,33 +4,49 @@
 import PackageDescription
 
 let package = Package(
-    name: "Repository",
+    name: "Interactor",
     platforms: [
-        .iOS(.v16), .macOS(.v10_15)
+        .iOS(.v16), .macOS(.v13)
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "Repository",
-            targets: ["Repository"]
+            name: "Interactor",
+            targets: ["Interactor"]
+        ),
+        .library(
+            name: "InteractorMock",
+            targets: ["InteractorMock"]
         )
     ],
     dependencies: [
-        .package(path: "../Domain")
+        .package(path: "../ApiService"),
+        .package(path: "../Domain"),
+        .package(path: "../Repository"),
+        .package(path: "../TestUtils")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Repository",
+            name: "Interactor",
             dependencies: [
-                "Domain"
+                "ApiService",
+                "Repository"
+            ]
+        ),
+        .target(
+            name: "InteractorMock",
+            dependencies: [
+                "Interactor",
+                "TestUtils"
             ]
         ),
         .testTarget(
-            name: "RepositoryTests",
+            name: "InteractorTests",
             dependencies: [
-                "Repository",
+                "Interactor",
+                .product(name: "ApiServiceMock", package: "ApiService"),
                 .product(name: "DomainMock", package: "Domain")
             ]
         )
