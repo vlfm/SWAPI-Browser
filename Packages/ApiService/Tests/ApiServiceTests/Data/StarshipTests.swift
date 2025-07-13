@@ -9,24 +9,24 @@ struct StarshipTests {
     func initWithDto() throws {
         let data = try #require(try Bundle.module.jsonData(forResource: "Starship"))
         let dto = try JSONDecoder().decode(StarshipDto.self, from: data)
-        let starship = try Starship(dto: dto)
+        let starship = Starship(dto: dto)
         let expectedStarship = Starship(
-            cargoCapacity: 1000000000000,
+            cargoCapacity: "1000000000000",
             consumables: "3 years",
-            costInCredits: 1000000000000,
-            crew: 342953,
+            costInCredits: "1000000000000",
+            crew: "342,953",
             films: [
                 Film.ID(URL(string: "https://swapi.info/api/films/1")!)
             ],
             hyperdriveRating: "4.0",
             id: Starship.ID(URL(string: "https://swapi.info/api/starships/9")!),
-            length: 120000,
+            length: "120000",
             manufacturer: "Imperial Department of Military Research, Sienar Fleet Systems",
             maxAtmospheringSpeed: "n/a",
-            maxNumberOfMegalights: 10,
+            maxNumberOfMegalights: "10",
             model: "DS-1 Orbital Battle Station",
             name: "Death Star",
-            passengers: 843342,
+            passengers: "843,342",
             pilots: [],
             starshipClass: "Deep Space Mobile Battlestation"
         )

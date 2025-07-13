@@ -2,9 +2,7 @@ import Domain
 import Foundation
 
 extension Film: ApiEntity {
-    init(dto: FilmDto) throws {
-        let dateParser = Date.ISO8601FormatStyle().year().month().day()
-
+    init(dto: FilmDto) {
         self.init(
             characters: dto.characters.map { Person.ID($0) },
             director: dto.director,
@@ -13,7 +11,7 @@ extension Film: ApiEntity {
             openingCrawl: dto.opening_crawl,
             planets: dto.planets.map { Planet.ID($0) },
             producer: dto.producer,
-            releaseDate: try dateParser.parse(dto.release_date),
+            releaseDate: dto.release_date,
             species: dto.species.map { Species.ID($0) },
             starships: dto.starships.map { Starship.ID($0) },
             title: dto.title,

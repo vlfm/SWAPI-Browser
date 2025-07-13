@@ -8,7 +8,7 @@ public struct Film: Equatable, Identifiable, Sendable {
     public let openingCrawl: String
     public let planets: [Planet.ID]
     public let producer: String
-    public let releaseDate: Date
+    public let releaseDate: String
     public let species: [Species.ID]
     public let starships: [Starship.ID]
     public let title: String
@@ -22,7 +22,7 @@ public struct Film: Equatable, Identifiable, Sendable {
         openingCrawl: String,
         planets: [Planet.ID],
         producer: String,
-        releaseDate: Date,
+        releaseDate: String,
         species: [Species.ID],
         starships: [Starship.ID],
         title: String,

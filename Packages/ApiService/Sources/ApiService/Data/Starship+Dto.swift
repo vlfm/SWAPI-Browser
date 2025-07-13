@@ -2,26 +2,22 @@ import Domain
 import Foundation
 
 extension Starship: ApiEntity {
-    init(dto: StarshipDto) throws {
+    init(dto: StarshipDto) {
         self.init(
-            cargoCapacity: try dto.cargo_capacity.parseDouble(
-                message: "Starship.cargo_capacity: \(dto.cargo_capacity)"
-            ),
+            cargoCapacity: dto.cargo_capacity,
             consumables: dto.consumables,
-            costInCredits: try dto.cost_in_credits.parseDouble(
-                message: "Starship.cost_in_credits: \(dto.cost_in_credits)"
-            ),
-            crew: try dto.crew.parseInt(message: "Starship.crew: \(dto.crew)"),
+            costInCredits: dto.cost_in_credits,
+            crew: dto.crew,
             films: dto.films.map { Film.ID($0) },
             hyperdriveRating: dto.hyperdrive_rating,
             id: ID(dto.url),
-            length: try dto.length.parseDouble(message: "Starship.length: \(dto.length)"),
+            length: dto.length,
             manufacturer: dto.manufacturer,
             maxAtmospheringSpeed: dto.max_atmosphering_speed,
-            maxNumberOfMegalights: try dto.MGLT.parseDouble(message: "Starship.MGLT: \(dto.MGLT)"),
+            maxNumberOfMegalights: dto.MGLT,
             model: dto.model,
             name: dto.name,
-            passengers: try dto.passengers.parseInt(message: "Starship.passengers: \(dto.passengers)"),
+            passengers: dto.passengers,
             pilots: dto.pilots.map { Person.ID($0) },
             starshipClass: dto.starship_class
         )

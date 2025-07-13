@@ -2,17 +2,17 @@ import Domain
 import Foundation
 
 extension Person: ApiEntity {
-    init(dto: PersonDto) throws {
+    init(dto: PersonDto) {
         self.init(
             birthYear: dto.birth_year,
             eyeColor: dto.eye_color,
             films: dto.films.map { Film.ID($0) },
             gender: dto.gender,
             hairColor: dto.hair_color,
-            height: try dto.height.parseDouble(message: "Person.height: \(dto.height)"),
+            height: dto.height,
             homeworld: Planet.ID(dto.homeworld),
             id: ID(dto.url),
-            mass: try dto.mass.parseDouble(message: "Person.mass: \(dto.mass)"),
+            mass: dto.mass,
             name: dto.name,
             skinColor: dto.skin_color,
             species: dto.species.map { Species.ID($0) },

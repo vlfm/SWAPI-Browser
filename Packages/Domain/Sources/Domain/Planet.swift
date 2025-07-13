@@ -2,30 +2,30 @@ import Foundation
 
 public struct Planet: Equatable, Identifiable, Sendable {
     public let climate: String
-    public let diameter: Double
+    public let diameter: String
     public let films: [Film.ID]
     public let gravity: String
     public let id: Id<Self, URL>
     public let name: String
-    public let orbitalPeriod: Double
-    public let population: Int64
+    public let orbitalPeriod: String
+    public let population: String
     public let residents: [Person.ID]
-    public let rotationPeriod: Double
-    public let surfaceWater: Double
+    public let rotationPeriod: String
+    public let surfaceWater: String
     public let terrain: String
 
     public init(
         climate: String,
-        diameter: Double,
+        diameter: String,
         films: [Film.ID],
         gravity: String,
         id: Id<Self, URL>,
         name: String,
-        orbitalPeriod: Double,
-        population: Int64,
+        orbitalPeriod: String,
+        population: String,
         residents: [Person.ID],
-        rotationPeriod: Double,
-        surfaceWater: Double,
+        rotationPeriod: String,
+        surfaceWater: String,
         terrain: String
     ) {
         self.climate = climate

@@ -6,10 +6,10 @@ public struct Person: Equatable, Identifiable, Sendable {
     public let films: [Film.ID]
     public let gender: String
     public let hairColor: String
-    public let height: Double
+    public let height: String
     public let homeworld: Planet.ID
     public let id: Id<Self, URL>
-    public let mass: Double
+    public let mass: String
     public let name: String
     public let skinColor: String
     public let species: [Species.ID]
@@ -22,10 +22,10 @@ public struct Person: Equatable, Identifiable, Sendable {
         films: [Film.ID],
         gender: String,
         hairColor: String,
-        height: Double,
+        height: String,
         homeworld: Planet.ID,
         id: Id<Self, URL>,
-        mass: Double,
+        mass: String,
         name: String,
         skinColor: String,
         species: [Species.ID],

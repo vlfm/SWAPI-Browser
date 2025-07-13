@@ -9,10 +9,10 @@ struct PlanetTests {
     func initWithDto() throws {
         let data = try #require(try Bundle.module.jsonData(forResource: "Planet"))
         let dto = try JSONDecoder().decode(PlanetDto.self, from: data)
-        let planet = try Planet(dto: dto)
+        let planet = Planet(dto: dto)
         let expectedPlanet = Planet(
             climate: "arid",
-            diameter: 10465,
+            diameter: "10465",
             films: [
                 Film.ID(URL(string: "https://swapi.info/api/films/1")!),
                 Film.ID(URL(string: "https://swapi.info/api/films/3")!),
@@ -23,8 +23,8 @@ struct PlanetTests {
             gravity: "1 standard",
             id: Planet.ID(URL(string: "https://swapi.info/api/planets/1")!),
             name: "Tatooine",
-            orbitalPeriod: 304,
-            population: 200000,
+            orbitalPeriod: "304",
+            population: "200000",
             residents: [
                 Person.ID(URL(string: "https://swapi.info/api/people/1")!),
                 Person.ID(URL(string: "https://swapi.info/api/people/2")!),
@@ -37,8 +37,8 @@ struct PlanetTests {
                 Person.ID(URL(string: "https://swapi.info/api/people/43")!),
                 Person.ID(URL(string: "https://swapi.info/api/people/62")!)
             ],
-            rotationPeriod: 23,
-            surfaceWater: 1,
+            rotationPeriod: "23",
+            surfaceWater: "1",
             terrain: "desert"
         )
 

@@ -9,7 +9,7 @@ struct PersonTests {
     func initWithDto() throws {
         let data = try #require(try Bundle.module.jsonData(forResource: "Person"))
         let dto = try JSONDecoder().decode(PersonDto.self, from: data)
-        let person = try Person(dto: dto)
+        let person = Person(dto: dto)
         let expectedPerson = Person(
             birthYear: "19BBY",
             eyeColor: "blue",
@@ -21,10 +21,10 @@ struct PersonTests {
             ],
             gender: "male",
             hairColor: "blond",
-            height: 172,
+            height: "172",
             homeworld: Planet.ID(URL(string: "https://swapi.info/api/planets/1")!),
             id: Person.ID(URL(string: "https://swapi.info/api/people/1")!),
-            mass: 77,
+            mass: "77",
             name: "Luke Skywalker",
             skinColor: "fair",
             species: [],

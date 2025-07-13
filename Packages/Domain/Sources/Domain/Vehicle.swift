@@ -1,34 +1,34 @@
 import Foundation
 
 public struct Vehicle: Equatable, Identifiable, Sendable {
-    public let cargoCapacity: Double
+    public let cargoCapacity: String
     public let consumables: String
-    public let costInCredits: Double
-    public let crew: Int
+    public let costInCredits: String
+    public let crew: String
     public let films: [Film.ID]
     public let id: Id<Self, URL>
-    public let length: Double
+    public let length: String
     public let manufacturer: String
     public let maxAtmospheringSpeed: String
     public let model: String
     public let name: String
-    public let passengers: Int
+    public let passengers: String
     public let pilots: [Person.ID]
     public let vehicleClass: String
 
     public init(
-        cargoCapacity: Double,
+        cargoCapacity: String,
         consumables: String,
-        costInCredits: Double,
-        crew: Int,
+        costInCredits: String,
+        crew: String,
         films: [Film.ID],
         id: Id<Self, URL>,
-        length: Double,
+        length: String,
         manufacturer: String,
         maxAtmospheringSpeed: String,
         model: String,
         name: String,
-        passengers: Int,
+        passengers: String,
         pilots: [Person.ID],
         vehicleClass: String
     ) {

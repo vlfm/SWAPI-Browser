@@ -10,8 +10,7 @@ struct FilmTests {
     func initWithDto() throws {
         let data = try #require(try Bundle.module.jsonData(forResource: "Film"))
         let dto = try JSONDecoder().decode(FilmDto.self, from: data)
-        let dateParser = Date.ISO8601FormatStyle().year().month().day()
-        let film = try Film(dto: dto)
+        let film = Film(dto: dto)
         let expectedFilm = Film(
             characters: [
                 Person.ID(URL(string: "https://swapi.info/api/people/1")!),
@@ -43,7 +42,7 @@ struct FilmTests {
                 Planet.ID(URL(string: "https://swapi.info/api/planets/3")!)
             ],
             producer: "Gary Kurtz, Rick McCallum",
-            releaseDate: try dateParser.parse("1977-05-25"),
+            releaseDate: "1977-05-25",
             species: [
                 Species.ID(URL(string: "https://swapi.info/api/species/1")!),
                 Species.ID(URL(string: "https://swapi.info/api/species/2")!),

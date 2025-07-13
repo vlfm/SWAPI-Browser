@@ -1,34 +1,34 @@
 import Foundation
 
 public struct Species: Equatable, Identifiable, Sendable {
-    public let averageHeight: Double
-    public let averageLifespan: Double
+    public let averageHeight: String
+    public let averageLifespan: String
     public let classification: String
     public let designation: String
-    public let eyeColors: [String]
+    public let eyeColors: String
     public let films: [Film.ID]
-    public let hairColors: [String]
+    public let hairColors: String
     public let homeworld: Planet.ID
     public let id: Id<Self, URL>
     public let language: String
     public let name: String
     public let people: [Person.ID]
-    public let skinColors: [String]
+    public let skinColors: String
 
     public init(
-        averageHeight: Double,
-        averageLifespan: Double,
+        averageHeight: String,
+        averageLifespan: String,
         classification: String,
         designation: String,
-        eyeColors: [String],
+        eyeColors: String,
         films: [Film.ID],
-        hairColors: [String],
+        hairColors: String,
         homeworld: Planet.ID,
         id: Id<Self, URL>,
         language: String,
         name: String,
         people: [Person.ID],
-        skinColors: [String]
+        skinColors: String
     ) {
         self.averageHeight = averageHeight
         self.averageLifespan = averageLifespan
