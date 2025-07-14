@@ -26,9 +26,7 @@ final class DataLoader<Value: Sendable> {
 
     func loadData() {
         Task {
-            for loadOperation in loadOperations {
-                await loadData(loadOperation: loadOperation)
-            }
+            await loadDataAsync()
         }
     }
 
