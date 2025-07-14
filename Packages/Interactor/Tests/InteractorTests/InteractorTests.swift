@@ -27,40 +27,25 @@ struct InteractorTests {
     // MARK: planets
 
     @Test
-    func planets_repositoryIsNotEmpty_returnsPlanetsFromRepository() async throws {
-        try await repository.save(entities: planets)
-        #expect(try await sut.planets() == planets)
+    func planets_sourceIsApi_returnsPlanetsFomApi() async throws {
+        await apiService.rootMockFunc.willReturn(root)
+        await apiService.planetsMockFunc.willReturn(planets)
+        #expect(try await sut.planets(source: .api) == planets)
     }
 
     @Test
-    func planets_repositoryIsNotEmpty_doesntCallApiService() async throws {
+    func planets_sourceIsApi_savesPlanetsToRepository() async throws {
+        await apiService.rootMockFunc.willReturn(root)
+        await apiService.planetsMockFunc.willReturn(planets)
+        _ = try await sut.planets(source: .api)
+        #expect(try await sut.planets(source: .cache) == planets)
+    }
+
+    @Test
+    func planets_sourceIsCache_returnsPlanetsFromRepository() async throws {
         try await repository.save(entities: planets)
-        _ = try await sut.planets()
+        #expect(try await sut.planets(source: .cache) == planets)
         #expect(await apiService.planetsMockFunc.callCount == 0)
-    }
-
-    @Test
-    func planets_repositoryIsEmpty_callApiService() async throws {
-        await apiService.rootMockFunc.willReturn(root)
-        await apiService.planetsMockFunc.willReturn(planets)
-        _ = try await sut.planets()
-        #expect(await apiService.planetsMockFunc.callCount == 1)
-        #expect(await apiService.planetsMockFunc.lastInput == root)
-    }
-
-    @Test
-    func planets_repositoryIsEmpty_savesPlanetsToRepository() async throws {
-        await apiService.rootMockFunc.willReturn(root)
-        await apiService.planetsMockFunc.willReturn(planets)
-        _ = try await sut.planets()
-        #expect(try await repository.fetchAll(entityType: Planet.self) == planets)
-    }
-
-    @Test
-    func planets_repositoryIsEmpty_returnsPlanetsFromApiService() async throws {
-        await apiService.rootMockFunc.willReturn(root)
-        await apiService.planetsMockFunc.willReturn(planets)
-        #expect(try await sut.planets() == planets)
     }
 
     // MARK: species (list)

@@ -15,28 +15,28 @@ private final class InteractorImpl: Interactor {
         self.repository = repository
     }
 
-    func films() async throws -> [Film] {
-        return try await getList()
+    func films(source: Source) async throws -> [Film] {
+        return try await getList(source: source)
     }
 
-    func people() async throws -> [Person] {
-        return try await getList()
+    func people(source: Source) async throws -> [Person] {
+        return try await getList(source: source)
     }
 
-    func planets() async throws -> [Planet] {
-        return try await getList()
+    func planets(source: Source) async throws -> [Planet] {
+        return try await getList(source: source)
     }
 
-    func species() async throws -> [Species] {
-        return try await getList()
+    func species(source: Source) async throws -> [Species] {
+        return try await getList(source: source)
     }
 
-    func starships() async throws -> [Starship] {
-        return try await getList()
+    func starships(source: Source) async throws -> [Starship] {
+        return try await getList(source: source)
     }
 
-    func vehicles() async throws -> [Vehicle] {
-        return try await getList()
+    func vehicles(source: Source) async throws -> [Vehicle] {
+        return try await getList(source: source)
     }
 
     func film(id: Film.ID) async throws -> Film {
@@ -77,21 +77,15 @@ extension InteractorImpl {
 }
 
 extension InteractorImpl {
-    // Simple strategy of loading list of entities:
-    // First, try load from repository, next try to load from api service
-    func getList<Entity: InteractorEntity>() async throws -> [Entity] {
-        let entities = try await Entity.get(from: repository)
-
-        // Here, if repository returns empty collection, try load from api.
-        // Although, empty result may be valid (api returned empty result before),
-        // ignore this case for simplicity.
-        if !entities.isEmpty {
-            return entities
-        } else {
+    func getList<Entity: InteractorEntity>(source: Source) async throws -> [Entity] {
+        switch source {
+        case .api:
             let root = try await self.root()
             let entities = try await Entity.get(from: apiService, root: root)
             try await repository.save(entities: entities)
             return entities
+        case .cache:
+            return try await Entity.get(from: repository)
         }
     }
 

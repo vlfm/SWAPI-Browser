@@ -3,12 +3,12 @@ import Domain
 import Repository
 
 public protocol Interactor: AnyObject, Sendable {
-    func films() async throws -> [Film]
-    func people() async throws -> [Person]
-    func planets() async throws -> [Planet]
-    func species() async throws -> [Species]
-    func starships() async throws -> [Starship]
-    func vehicles() async throws -> [Vehicle]
+    func films(source: Source) async throws -> [Film]
+    func people(source: Source) async throws -> [Person]
+    func planets(source: Source) async throws -> [Planet]
+    func species(source: Source) async throws -> [Species]
+    func starships(source: Source) async throws -> [Starship]
+    func vehicles(source: Source) async throws -> [Vehicle]
 
     func film(id: Film.ID) async throws -> Film
     func person(id: Person.ID) async throws -> Person
