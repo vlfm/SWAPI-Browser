@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7611880F2E256358002E578A /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = 7611880E2E256358002E578A /* UI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		76F144602E212F1200285977 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -30,14 +34,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		76CF0AFC2E2531B900EBDC60 /* SWAPI-BrowserTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "SWAPI-BrowserTests";
+			sourceTree = "<group>";
+		};
 		76F144542E212F1100285977 /* SWAPI-Browser */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "SWAPI-Browser";
-			sourceTree = "<group>";
-		};
-		76F144622E212F1200285977 /* SWAPI-BrowserTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "SWAPI-BrowserTests";
 			sourceTree = "<group>";
 		};
 		76F1446C2E212F1200285977 /* SWAPI-BrowserUITests */ = {
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7611880F2E256358002E578A /* UI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,13 +77,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		761917FA2E2544E500C9831D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		76F144492E212F1100285977 = {
 			isa = PBXGroup;
 			children = (
-				76F144542E212F1100285977 /* SWAPI-Browser */,
-				76F144622E212F1200285977 /* SWAPI-BrowserTests */,
-				76F1446C2E212F1200285977 /* SWAPI-BrowserUITests */,
 				76F144532E212F1100285977 /* Products */,
+				76F144542E212F1100285977 /* SWAPI-Browser */,
+				76CF0AFC2E2531B900EBDC60 /* SWAPI-BrowserTests */,
+				76F1446C2E212F1200285977 /* SWAPI-BrowserUITests */,
+				761917FA2E2544E500C9831D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +125,7 @@
 			);
 			name = "SWAPI-Browser";
 			packageProductDependencies = (
+				7611880E2E256358002E578A /* UI */,
 			);
 			productName = "SWAPI-Browser";
 			productReference = 76F144522E212F1100285977 /* SWAPI-Browser.app */;
@@ -131,7 +145,7 @@
 				76F144612E212F1200285977 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				76F144622E212F1200285977 /* SWAPI-BrowserTests */,
+				76CF0AFC2E2531B900EBDC60 /* SWAPI-BrowserTests */,
 			);
 			name = "SWAPI-BrowserTests";
 			packageProductDependencies = (
@@ -195,6 +209,9 @@
 			);
 			mainGroup = 76F144492E212F1100285977;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7611880D2E256358002E578A /* XCLocalSwiftPackageReference "../Packages/UI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 76F144532E212F1100285977 /* Products */;
 			projectDirPath = "";
@@ -566,6 +583,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		7611880D2E256358002E578A /* XCLocalSwiftPackageReference "../Packages/UI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/UI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7611880E2E256358002E578A /* UI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 76F1444A2E212F1100285977 /* Project object */;
 }
