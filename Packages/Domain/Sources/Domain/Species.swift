@@ -8,7 +8,7 @@ public struct Species: Equatable, Identifiable, Sendable {
     public let eyeColors: String
     public let films: [Film.ID]
     public let hairColors: String
-    public let homeworld: Planet.ID
+    public let homeworld: Planet.ID?
     public let id: Id<Self, URL>
     public let language: String
     public let name: String
@@ -23,7 +23,7 @@ public struct Species: Equatable, Identifiable, Sendable {
         eyeColors: String,
         films: [Film.ID],
         hairColors: String,
-        homeworld: Planet.ID,
+        homeworld: Planet.ID?,
         id: Id<Self, URL>,
         language: String,
         name: String,

@@ -73,6 +73,7 @@ extension ApiServiceImpl {
             let data = try await httpClient.data(for: url)
             return try Entity(data: data)
         } catch {
+            print("ApiService error: \(error)")
             throw error
         }
     }
@@ -83,6 +84,7 @@ extension ApiServiceImpl {
             let dtos = try JSONDecoder().decode([Entity.Dto].self, from: data)
             return try dtos.map { try Entity(dto: $0) }
         } catch {
+            print("ApiService error: \(error)")
             throw error
         }
     }

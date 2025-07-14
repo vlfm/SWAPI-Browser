@@ -11,7 +11,7 @@ extension Species: ApiEntity {
             eyeColors: dto.eye_colors,
             films: dto.films.map { Film.ID($0) },
             hairColors: dto.hair_colors,
-            homeworld: Planet.ID(dto.homeworld),
+            homeworld: dto.homeworld.flatMap { Planet.ID($0) },
             id: ID(dto.url),
             language: dto.language,
             name: dto.name,
@@ -29,7 +29,7 @@ struct SpeciesDto: Codable {
     let eye_colors: String
     let films: [URL]
     let hair_colors: String
-    let homeworld: URL
+    let homeworld: URL? // null for https://swapi.info/api/species/2
     let language: String
     let name: String
     let people: [URL]
