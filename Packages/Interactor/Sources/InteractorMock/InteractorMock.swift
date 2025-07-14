@@ -17,6 +17,9 @@ public final class InteractorMock: Interactor {
     public let starshipMockFunc = AsyncMockFunc<Starship.ID, Starship, Error>()
     public let vehicleMockFunc = AsyncMockFunc<Vehicle.ID, Vehicle, Error>()
 
+    public init() {
+    }
+
     public func films(source: Source) async throws -> [Film] {
         return try await filmsMockFunc.call(source)
     }

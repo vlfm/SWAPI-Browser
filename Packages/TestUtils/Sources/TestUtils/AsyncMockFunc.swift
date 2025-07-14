@@ -10,6 +10,10 @@ public actor AsyncMockFunc<Input, Output, Error: Swift.Error> {
         return try mockFunc.call(input)
     }
 
+    public func willReturn(_ output: @escaping (Input) throws(Error) -> Output?) {
+        mockFunc.willReturn(output)
+    }
+
     public func willReturn(_ output: Output) {
         mockFunc.willReturn(output)
     }

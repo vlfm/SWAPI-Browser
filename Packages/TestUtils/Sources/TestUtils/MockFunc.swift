@@ -1,8 +1,7 @@
 public final class MockFunc<Input, Output, Error: Swift.Error> {
     public private(set) var inputs: [Input] = []
 
-    private var error: Error?
-    private var output: Output?
+    private var output: (Input) throws -> Output? = { _ in nil }
 
     public init() {
     }
@@ -10,21 +9,23 @@ public final class MockFunc<Input, Output, Error: Swift.Error> {
     public func call(_ input: Input) throws(Error) -> Output {
         inputs.append(input)
 
-        if let error = error {
-            throw error
+        do {
+            return try output(input)!
+        } catch {
+            throw error as! Error
         }
-
-        return output!
     }
 
-    public func willReturn(_ output: Output) {
-        self.error = nil
+    public func willReturn(_ output: @escaping (Input) throws(Error) -> Output?) {
         self.output = output
     }
 
+    public func willReturn(_ output: Output) {
+        self.output = { _ in output }
+    }
+
     public func willThrow(_ error: Error) {
-        self.error = error
-        self.output = nil
+        self.output = { _ in throw error }
     }
 }
 
@@ -46,7 +47,6 @@ public extension MockFunc where Input == Void {
 
 public extension MockFunc where Output == Void {
     func willReturn() {
-        self.error = nil
-        self.output = ()
+        self.output = { _ in () }
     }
 }
